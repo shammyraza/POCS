@@ -1,0 +1,63 @@
+server:
+  port: 8082
+
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3307/HotelService
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+  application:
+    name: HOTEL-SERVICE
+#  cloud:
+#    config:
+#      uri: http://localhost:8085
+#      fail-fast: true
+  config:
+    import: configserver:http://localhost:8085
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-01274085.okta.com/oauth2/default
+      client:
+        registration:
+          my-internal-client:
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oai2j1yp4IUxu5Dj5d7
+            client-secret: yjKbiqQYBXfnnJykxbqsYBfyXCc_nHCqoXfagIhLvheGIwRpgUW2FxDTX2-xqj56
+
+        provider:
+          okta:
+            issuer-uri: https://dev-01274085.okta.com/oauth2/default
+
+
+# added in config server
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+
+okta:
+  oauth2:
+    issuer: https://dev-01274085.okta.com/oauth2/default
+    audience: api://default
+
+
+
+
