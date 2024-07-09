@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: CONFIG-SERVER
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shammyraza/config-server-files
+          clone-on-start: true
+
+#use below pattern to test config server
+#http://{config-server-host}:{port}/{application}/{profile}[/{label}]
+#e.g http://localhost:8085/USER-SERVICE/dev/main
