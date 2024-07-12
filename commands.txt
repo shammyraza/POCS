@@ -1,0 +1,11 @@
+Windows
+___________
+Create new topic 
+>bin\windows\kafka-topics.bat --create --topic location-update-topic --bootstrap-server localhost:9092
+
+Produce new topic 
+bin\windows\kafka-console-producer.bat --topic location-update-topic --bootstrap-server localhost:9092
+
+Consuming message
+bin\windows\kafka-console-consumer.bat --topic location-update-topic --from-beginning --bootstrap-server localhost:9092
+
